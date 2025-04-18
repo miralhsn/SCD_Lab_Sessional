@@ -71,3 +71,4 @@ app.post('/customers/update-points', async (req, res) => {
 app.listen(port, () => {
   console.log(`Customer Service running on port ${port}`);
 });
+

@@ -1,0 +1,62 @@
+version: '3.8'
+
+services:
+  api-gateway:
+    build:
+      context: ./Cafe_Management_System/api-gateway
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cafe-network
+    depends_on:
+      - customer-services
+      - inventory-services
+      - menu-services
+      - order-services
+      - payment-services
+
+  customer-services:
+    build:
+      context: ./Cafe_Management_System/customer-services
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cafe-network
+
+  inventory-services:
+    build:
+      context: ./Cafe_Management_System/inventory-services
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cafe-network
+
+  menu-services:
+    build:
+      context: ./Cafe_Management_System/menu-services
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cafe-network
+
+  order-services:
+    build:
+      context: ./Cafe_Management_System/order-services
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cafe-network
+
+  payment-services:
+    build:
+      context: ./Cafe_Management_System/payment-services
+    environment:
+      - NODE_ENV=development
+    networks:
+      - cafe-network
+
+networks:
+  cafe-network:
+    driver: bridge 
